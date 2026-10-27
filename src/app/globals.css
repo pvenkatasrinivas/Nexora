@@ -1,0 +1,70 @@
+/* Tailwind CSS v4: the theme (colours, fonts, radii) is configured right here
+   with @theme, instead of a separate tailwind.config file. Every token below
+   becomes a utility class, e.g. --color-brand -> bg-brand / text-brand. */
+@import "tailwindcss";
+
+@theme {
+  /* Fonts (loaded in app/layout.tsx) */
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Colour palette: indigo + marigold, two classic Indian dye colours */
+  --color-ink: #1a1c3d; /* main text */
+  --color-ink-soft: #4b4e6d; /* secondary text */
+  --color-line: #dcdde8; /* borders */
+  --color-paper: #f5f5fa; /* page background */
+  --color-brand: #2b2d8a; /* indigo: primary buttons and links */
+  --color-brand-dark: #1e1f66;
+  --color-brand-tint: #e9e9f7;
+  --color-marigold: #f2a900; /* accent: highlights and offers */
+  --color-marigold-tint: #fff3d1;
+  --color-danger: #b23a2e;
+  --color-danger-tint: #fbeae8;
+  --color-success: #1f7a5c;
+  --color-success-tint: #e3f3ec;
+
+  /* Corner radius scale */
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-ink;
+    text-wrap: balance;
+  }
+
+  /* A clear, consistent keyboard focus outline for every interactive element */
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  /* Respect users who ask their device for less motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Page width wrapper used on every page */
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
