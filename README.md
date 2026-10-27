@@ -1,6 +1,6 @@
 # Nexora — Responsive E-Commerce Website
 
-Nexora is a small online store built with **Next.js, React, TypeScript and Tailwind CSS**. Shoppers can browse and search products, add them to a cart, and place a demo order. A basic admin page lets you add, edit and delete products.
+Nexora is a front-end storefront that shows the full shopping flow without a backend: browsing, cart, checkout and basic product management. It is a small online store built with **Next.js, React, TypeScript and Tailwind CSS**. Shoppers can browse and search products, add them to a cart, and place a demo order. A basic admin page lets you add, edit and delete products.
 
 There is no real payment, no login and no database: the cart and product changes are saved in the browser's **localStorage**.
 
@@ -198,15 +198,13 @@ Tailwind is mobile-first: classes without a prefix apply to phones, and `sm:` (6
 
 ---
 
-## How it was tested
+## Checks
 
-Before packaging, the project was checked with:
+`npm run check` runs the TypeScript type check, ESLint and a production build:
 
-- `npm run typecheck` — no TypeScript errors
-- `npm run lint` — no ESLint errors or warnings
-- `npm run build` — production build succeeds
-
-The production build was also tested in a real Chromium browser with an automated script (kept outside this project, so no test library is added as a dependency). It covered search, category filter, sorting, combined filters, the empty-results message, add to cart, quantity limits, cart totals and the free-delivery rule, cart persistence across pages and refresh, checkout validation errors and focus, a full demo order, stock reduction, admin add/edit/delete with validation and confirmation, the mobile menu, and the 404 page. Every page was checked at 320, 375, 425, 768, 1024 and 1440px for horizontal scrolling and tap-target size, with no console errors.
+- `npm run typecheck`
+- `npm run lint`
+- `npm run build`
 
 ### Manual test checklist
 
