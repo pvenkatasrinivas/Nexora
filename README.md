@@ -2,7 +2,7 @@
 
 Nexora is a small online store built with **Next.js, React, TypeScript and Tailwind CSS**. Shoppers can browse and search products, add them to a cart, and place a demo order. A basic admin page lets you add, edit and delete products.
 
-It is a learning and portfolio project. There is no real payment, no login and no database: the cart and product changes are saved in the browser's **localStorage**.
+There is no real payment, no login and no database: the cart and product changes are saved in the browser's **localStorage**.
 
 ---
 
@@ -182,7 +182,7 @@ Tailwind is mobile-first: classes without a prefix apply to phones, and `sm:` (6
 
 ---
 
-## Explaining the main components (interview notes)
+## Main components
 
 - **`layout.tsx`** — The frame around every page. It loads the fonts and styles, then wraps the page in `Providers` (the two contexts), with `Navbar` above and `Footer` below.
 - **`Providers`** — Puts `ProductProvider` around `CartProvider`. The order matters: the cart needs product prices.
@@ -196,12 +196,6 @@ Tailwind is mobile-first: classes without a prefix apply to phones, and `sm:` (6
 - **`ProductForm`** — The admin form. Numbers are kept as strings while typing, then validated and converted with `Number()` on save. The same form handles "add" and "edit".
 - **`ConfirmDialog`** — Uses the native HTML `<dialog>` element. `showModal()` gives focus trapping and the Esc key without any library.
 
-Common questions:
-
-- *Why Context instead of Redux?* The app has two small pieces of shared state. Context is built into React and is enough here.
-- *Why localStorage?* The brief asked for no backend. localStorage keeps data after a refresh, but only in that one browser.
-- *How would you add a real backend?* Replace the localStorage calls in the two contexts with `fetch` calls to an API (for example Next.js Route Handlers or a separate server) and a database. The components would not need to change.
-
 ---
 
 ## How it was tested
@@ -212,7 +206,7 @@ Before packaging, the project was checked with:
 - `npm run lint` — no ESLint errors or warnings
 - `npm run build` — production build succeeds
 
-The running production build was also tested in a real Chromium browser with an automated script (kept outside this project, so no test library is added as a dependency). It covered search, category filter, sorting, combined filters, the empty-results message, add to cart, quantity limits, cart totals and the free-delivery rule, cart persistence across pages and refresh, checkout validation errors and focus, a full demo order, stock reduction, admin add/edit/delete with validation and confirmation, the mobile menu, and the 404 page. Every page was checked at 320, 375, 425, 768, 1024 and 1440px for horizontal scrolling and tap-target size, with no console errors.
+The production build was also tested in a real Chromium browser with an automated script (kept outside this project, so no test library is added as a dependency). It covered search, category filter, sorting, combined filters, the empty-results message, add to cart, quantity limits, cart totals and the free-delivery rule, cart persistence across pages and refresh, checkout validation errors and focus, a full demo order, stock reduction, admin add/edit/delete with validation and confirmation, the mobile menu, and the 404 page. Every page was checked at 320, 375, 425, 768, 1024 and 1440px for horizontal scrolling and tap-target size, with no console errors.
 
 ### Manual test checklist
 
